@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e-learning-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e-learning
+  template:
+    metadata:
+      labels:
+        app: e-learning
+    spec:
+      containers:
+      - name: e-learning-container
+        image: e-learning-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "200m"
+          limits:
+            cpu: "500m"
